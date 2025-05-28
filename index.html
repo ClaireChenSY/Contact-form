@@ -19,19 +19,11 @@
     const form = document.getElementById('contact-form');
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
-
       const formData = new FormData(form);
-      const data = {};
-      formData.forEach((value, key) => {
-        data[key] = value;
-      });
 
       const response = await fetch('https://script.google.com/macros/s/AKfycbye-lXgJBacn46C142uR6Ud0_Nyud_HTzhKi6pN3ADeA7aManNEReoGUMfD4wO24OtLjA/exec', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
+        body: formData
       });
 
       if (response.ok) {
