@@ -4,17 +4,10 @@
     e.preventDefault();
 
     const formData = new FormData(form);
-    const data = {};
-    formData.forEach((value, key) => {
-      data[key] = value;
-    });
 
     const response = await fetch("https://script.google.com/macros/s/AKfycbyy1ideramTAbg6kdomva4_RVb3k_fLipBQhylrJIJ4VQYVygIr6gW-pX4NjF9SpDGg6Q/exec", {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data)
+      body: formData
     });
 
     if (response.ok) {
